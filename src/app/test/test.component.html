@@ -1,1 +1,8 @@
-<p>test works!</p>
+<div class="main-container">
+  <p>hi {{ name }}</p>
+
+  <p>siteUrl: {{ siteUrl }}</p>
+
+  <input id="first" [value]="firstInputValue" />
+  <input id="second" bind-value="secondInputValue" [disabled]="isDisabled" />
+</div>
