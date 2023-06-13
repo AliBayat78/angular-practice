@@ -1,5 +1,8 @@
 <div class="main-container">
-  <p>hi {{ name }}</p>
+  <p [class.text-red]="hasError">hi {{ name }}</p>
+  <p [class.text-green]="!hasError">hi {{ name }}</p>
+  <p [class.text-special]="isSpecial">hi {{ name }}</p>
+  <p [ngClass]="messageClasses">hi {{ name }}</p>
 
   <p>siteUrl: {{ siteUrl }}</p>
 
