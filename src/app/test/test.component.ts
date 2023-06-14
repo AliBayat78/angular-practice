@@ -35,5 +35,7 @@ export class TestComponent {
     console.log(ref);
   }
 
+  public color: string = 'black';
+
   siteUrl: string = window.location.href;
 }

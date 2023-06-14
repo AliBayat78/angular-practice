@@ -20,4 +20,12 @@
 
   <button (click)="clickHandler($event)">Click on me</button>
   <button (click)="logMessage(firstInput.value)">log value of input</button>
+
+  <!-- ngSwitch Directive -->
+  <div [ngSwitch]="color">
+    <p *ngSwitchCase="'purple'">Your color is purple</p>
+    <p *ngSwitchCase="'blue'">your color is blue</p>
+    <p *ngSwitchCase="'black'">your color is black</p>
+    <p *ngSwitchDefault>Pick one color</p>
+  </div>
 </div>
