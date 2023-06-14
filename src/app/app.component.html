@@ -1,1 +1,11 @@
-<app-test></app-test>
+<div class="container">
+  <h1>Message from child : {{ receivedMessage }}</h1>
+  <app-test
+    [parentData]="outPostedMessage"
+    (childEvent)="receivedMessage = $event"
+  ></app-test>
+  <div style="display: flex; width: 100%; justify-content: center; gap: 10px">
+    <p>Send Data From Parent to Child:</p>
+    <input [(ngModel)]="outPostedMessage" />
+  </div>
+</div>

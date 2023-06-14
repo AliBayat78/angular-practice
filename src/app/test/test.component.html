@@ -1,7 +1,9 @@
 <div class="main-container">
+  <h1>Message from parent: {{ messageFromParent }}</h1>
   <div *ngFor="let name of names; index as i">
     <div [ngSwitch]="name">
       <p
+        (click)="inputValueHandler(name)"
         *ngSwitchCase="name"
         [ngClass]="{
           'text-black': name === 'ali',
@@ -13,4 +15,10 @@
       </p>
     </div>
   </div>
+
+  <div style="display: flex; width: 100%; justify-content: center; gap: 10px">
+    <p>Send Data From Child to Parent:</p>
+    <input (change)="childMessageHandler()" [(ngModel)]="childMessage" />
+  </div>
+  <p>{{ inputValue }}</p>
 </div>

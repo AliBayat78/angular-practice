@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular-practice';
+
+  public outPostedMessage: string = '';
+  public receivedMessage: string = '';
 }
