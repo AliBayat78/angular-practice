@@ -28,7 +28,11 @@ export class TestComponent {
   };
 
   clickHandler(event: MouseEvent) {
-    this.name = 'meow'
+    this.name = 'meow';
+  }
+
+  logMessage(ref: string) {
+    console.log(ref);
   }
 
   siteUrl: string = window.location.href;
