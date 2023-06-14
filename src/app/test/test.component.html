@@ -1,5 +1,11 @@
 <div class="main-container">
-  <p [class.text-red]="hasError">hi {{ name }}</p>
+  <p *ngIf="isSpecial; then thenBlock; else elseBlock"></p>
+  <ng-template #thenBlock>
+    <p [class.text-red]="hasError">conditional hi {{ name }}</p>
+  </ng-template>
+  <ng-template #elseBlock>
+    <p>Else statement</p>
+  </ng-template>
   <p [class.text-green]="!hasError">hi {{ name }}</p>
   <p [class.text-special]="isSpecial">hi {{ name }}</p>
   <p [ngClass]="messageClasses">hi {{ name }}</p>
