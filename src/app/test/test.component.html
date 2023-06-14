@@ -1,31 +1,16 @@
 <div class="main-container">
-  <p *ngIf="isSpecial; then thenBlock; else elseBlock"></p>
-  <ng-template #thenBlock>
-    <p [class.text-red]="hasError">conditional hi {{ name }}</p>
-  </ng-template>
-  <ng-template #elseBlock>
-    <p>Else statement</p>
-  </ng-template>
-  <p [class.text-green]="!hasError">hi {{ name }}</p>
-  <p [class.text-special]="isSpecial">hi {{ name }}</p>
-  <p [ngClass]="messageClasses">hi {{ name }}</p>
-
-  <p>siteUrl: {{ siteUrl }}</p>
-
-  <input [(ngModel)]="name" #firstInput id="first" [value]="firstInputValue" />
-  <input id="second" bind-value="secondInputValue" [disabled]="isDisabled" />
-
-  <p [style.color]="hasError ? 'red' : orange">Style Binding</p>
-  <p [ngStyle]="styleBindingObject">Style Binding</p>
-
-  <button (click)="clickHandler($event)">Click on me</button>
-  <button (click)="logMessage(firstInput.value)">log value of input</button>
-
-  <!-- ngSwitch Directive -->
-  <div [ngSwitch]="color">
-    <p *ngSwitchCase="'purple'">Your color is purple</p>
-    <p *ngSwitchCase="'blue'">your color is blue</p>
-    <p *ngSwitchCase="'black'">your color is black</p>
-    <p *ngSwitchDefault>Pick one color</p>
+  <div *ngFor="let name of names; index as i">
+    <div [ngSwitch]="name">
+      <p
+        *ngSwitchCase="name"
+        [ngClass]="{
+          'text-black': name === 'ali',
+          'text-red': name === 'reza',
+          'text-blue': name === 'ahmad' || name === 'mamad'
+        }"
+      >
+        {{ i + 1 }} {{ name }}
+      </p>
+    </div>
   </div>
 </div>
