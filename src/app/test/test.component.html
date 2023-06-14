@@ -6,7 +6,7 @@
 
   <p>siteUrl: {{ siteUrl }}</p>
 
-  <input #firstInput id="first" [value]="firstInputValue" />
+  <input [(ngModel)]="name" #firstInput id="first" [value]="firstInputValue" />
   <input id="second" bind-value="secondInputValue" [disabled]="isDisabled" />
 
   <p [style.color]="hasError ? 'red' : orange">Style Binding</p>
