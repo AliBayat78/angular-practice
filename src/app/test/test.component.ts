@@ -27,5 +27,9 @@ export class TestComponent {
     fontStyle: 'italic',
   };
 
+  clickHandler(event: MouseEvent) {
+    this.name = 'meow'
+  }
+
   siteUrl: string = window.location.href;
 }
