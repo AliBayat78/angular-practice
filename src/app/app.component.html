@@ -1,7 +1,12 @@
+<router-outlet></router-outlet>
+
 <div class="container">
   <h1>Data From Child: {{ receivedMessage }}</h1>
-  <app-test
-    (childEvent)="receivedMessage = $event"
-    [parentData]="outPostedMessage"
-  ></app-test>
+  <ng-container *ngIf="isTestRoute()">
+    <app-test
+      (childEvent)="receivedMessage = $event"
+      [parentData]="outPostedMessage"
+    ></app-test>
+  </ng-container>
+  <button routerLink="/test">test</button>
 </div>

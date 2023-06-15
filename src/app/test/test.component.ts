@@ -11,6 +11,7 @@ export class TestComponent {
   constructor(private _employeeService: EmployeeService) {}
 
   public employees: any[] = [];
+  public errorMessage: string = '';
 
   public names = ['ali', 'ahmad', 'reza', 'mamad'];
   public inputValue = 'ss';
@@ -31,9 +32,10 @@ export class TestComponent {
   ngOnInit() {
     this.sendMessage();
 
-    this._employeeService
-      .getEmployees()
-      .subscribe((data) => this.employees.push(data));
+    this._employeeService.getEmployees().subscribe(
+      (data) => this.employees.push(data),
+      (error) => (this.errorMessage = error)
+    );
   }
 
   public date = new Date();

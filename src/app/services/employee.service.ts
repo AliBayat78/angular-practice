@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-
+import { Observable, throwError, catchError } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,6 +17,10 @@ export class EmployeeService {
   ];
 
   getEmployees(): Observable<Object> {
-    return this.http.get(this.url);
+    return this.http.get(this.url).pipe(catchError(this.errorHandler));
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return throwError(() => error.message || 'server Error');
   }
 }
