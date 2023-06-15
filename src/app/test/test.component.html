@@ -1,5 +1,5 @@
 <div class="main-container">
-  <h1>Message from parent: {{ messageFromParent }}</h1>
+  <h1>Data From Parent: {{ receivedMessage | lowercase }}</h1>
   <div *ngFor="let name of names; index as i">
     <div [ngSwitch]="name">
       <p
@@ -15,10 +15,9 @@
       </p>
     </div>
   </div>
+  <button (click)="sendMessage()">Send Data</button>
 
-  <div style="display: flex; width: 100%; justify-content: center; gap: 10px">
-    <p>Send Data From Child to Parent:</p>
-    <input (change)="childMessageHandler()" [(ngModel)]="childMessage" />
-  </div>
-  <p>{{ inputValue }}</p>
+  <ul *ngFor="let employee of employees">
+    <li>{{ employee.id }}-{{ employee.name }} : {{ employee.age }}</li>
+  </ul>
 </div>

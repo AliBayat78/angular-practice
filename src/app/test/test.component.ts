@@ -1,4 +1,6 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
+import { EmployeeService } from '../services/employee.service';
+import { employeeType } from '../models/models';
 
 @Component({
   selector: 'app-test',
@@ -6,6 +8,10 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./test.component.scss'],
 })
 export class TestComponent {
+  constructor(private _employeeService: EmployeeService) {}
+
+  public employees: employeeType[] = [];
+
   public names = ['ali', 'ahmad', 'reza', 'mamad'];
   public inputValue = 'ss';
 
@@ -13,11 +19,20 @@ export class TestComponent {
     this.inputValue = name;
   }
 
-  public childMessage: string = '';
+  public childMessage: string = 'This is a Data from Child';
+
+  @Input('parentData') public receivedMessage: string = '';
+
   @Output() public childEvent = new EventEmitter();
-  childMessageHandler() {
+  sendMessage() {
     this.childEvent.emit(this.childMessage);
   }
 
-  @Input('parentData') public messageFromParent: string = '';
+  ngOnInit() {
+    this.sendMessage();
+
+    this.employees = this._employeeService.getEmployees();
+  }
+
+  public date = new Date();
 }

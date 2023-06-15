@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular-practice';
 
-  public outPostedMessage: string = '';
+  public outPostedMessage: string = 'This is a Data From Parent';
   public receivedMessage: string = '';
 }
