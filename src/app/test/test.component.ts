@@ -10,7 +10,7 @@ import { employeeType } from '../models/models';
 export class TestComponent {
   constructor(private _employeeService: EmployeeService) {}
 
-  public employees: employeeType[] = [];
+  public employees: any[] = [];
 
   public names = ['ali', 'ahmad', 'reza', 'mamad'];
   public inputValue = 'ss';
@@ -31,7 +31,9 @@ export class TestComponent {
   ngOnInit() {
     this.sendMessage();
 
-    this.employees = this._employeeService.getEmployees();
+    this._employeeService
+      .getEmployees()
+      .subscribe((data) => this.employees.push(data));
   }
 
   public date = new Date();
