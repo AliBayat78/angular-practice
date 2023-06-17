@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, Output, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { employeeType } from '../models/models';
+import { ActivatedRoute, ParamMap, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -8,7 +9,11 @@ import { employeeType } from '../models/models';
   styleUrls: ['./test.component.scss'],
 })
 export class TestComponent {
-  constructor(private _employeeService: EmployeeService) {}
+  constructor(
+    private _employeeService: EmployeeService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   public employees: any[] = [];
   public errorMessage: string = '';
@@ -37,6 +42,8 @@ export class TestComponent {
       (error) => (this.errorMessage = error)
     );
   }
-
+  goToDetailedComp() {
+    this.router.navigate(['/test', '1']);
+  }
   public date = new Date();
 }

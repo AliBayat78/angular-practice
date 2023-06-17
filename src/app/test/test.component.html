@@ -20,4 +20,6 @@
   <ul *ngFor="let employee of employees">
     <li>{{ employee.id }}-{{ employee.name }} : {{ employee.age }}</li>
   </ul>
+
+  <button (click)="goToDetailedComp()">Detailed Component</button>
 </div>

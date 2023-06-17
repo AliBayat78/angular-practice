@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { EmployeeService } from './services/employee.service';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { DetailedComponentComponent } from './detailed-component/detailed-component.component';
 
 @NgModule({
-  declarations: [AppComponent, TestComponent, NotfoundComponent],
+  declarations: [AppComponent, TestComponent, NotfoundComponent, DetailedComponentComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [EmployeeService],
   bootstrap: [AppComponent],
