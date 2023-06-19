@@ -42,8 +42,8 @@ export class TestComponent {
       (error) => (this.errorMessage = error)
     );
   }
-  goToDetailedComp() {
-    this.router.navigate(['/test', '1']);
+  goToDetailedComp(employee: employeeType) {
+    this.router.navigate(['/test', employee.id]);
   }
   public date = new Date();
 }

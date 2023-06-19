@@ -9,4 +9,6 @@
     ></app-test>
   </ng-container>
   <button routerLink="/test">test</button>
+  <input [ngModel]="inputValue" (ngModelChange)="alertHandler($event)" />
+  <p>{{ inputValue }}</p>
 </div>

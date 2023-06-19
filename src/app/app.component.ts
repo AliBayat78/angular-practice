@@ -9,6 +9,15 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'Angular-practice';
 
+  public inputValue: string = 'default';
+
+  alertHandler(updatedValue: string) {
+    this.inputValue = updatedValue;
+    if (updatedValue === 'alert') {
+      alert('this is an alert');
+    }
+  }
+
   constructor(private router: Router) {}
 
   public outPostedMessage: string = 'This is a Data From Parent';

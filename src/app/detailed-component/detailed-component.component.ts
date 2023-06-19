@@ -9,13 +9,14 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 export class DetailedComponentComponent {
   constructor(private route: ActivatedRoute, private router: Router) {}
   public urlId: string | null = '';
+  public componentId = this.route.snapshot.paramMap.get('id');
 
   ngOnInit() {
     // let componentId = this.route.snapshot.paramMap.get('id');
     // this.urlId = componentId;
     this.route.paramMap.subscribe((params: ParamMap) => {
-      let newId = params.get('id')
-      this.urlId = newId
+      let newId = params.get('id');
+      this.urlId = newId;
     });
   }
 
