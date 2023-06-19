@@ -4,11 +4,12 @@
   <h1>Data From Child: {{ receivedMessage }}</h1>
   <ng-container *ngIf="isTestRoute()">
     <app-test
+      #childComponent
       (childEvent)="receivedMessage = $event"
       [parentData]="outPostedMessage"
     ></app-test>
   </ng-container>
   <button routerLink="/test">test</button>
-  <input [ngModel]="inputValue" (ngModelChange)="alertHandler($event)" />
+  <input #inputReference [(ngModel)]="inputValue" />
   <p>{{ inputValue }}</p>
 </div>
