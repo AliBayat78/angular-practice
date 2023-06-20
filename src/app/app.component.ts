@@ -2,8 +2,12 @@ import {
   AfterViewInit,
   Component,
   ComponentRef,
+  DoCheck,
   ElementRef,
+  Input,
+  OnChanges,
   OnInit,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
@@ -14,21 +18,21 @@ import { TestComponent } from './test/test.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit, OnChanges, DoCheck {
   title = 'Angular-practice';
 
-  private _inputValue: string = 'default';
+  public inputValue: string = 'default';
 
-  get inputValue(): string {
-    return this._inputValue;
-  }
+  // get inputValue(): string {
+  //   return this._inputValue;
+  // }
 
-  set inputValue(value: string) {
-    this._inputValue = value;
-    if (value === 'alert') {
-      alert('alert');
-    }
-  }
+  // set inputValue(value: string) {
+  //   this._inputValue = value;
+  //   if (value === 'alert') {
+  //     alert('alert');
+  //   }
+  // }
 
   @ViewChild('inputReference', { static: false })
   inputReference: ElementRef<HTMLInputElement> = {} as ElementRef;
@@ -45,7 +49,18 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    console.log(this.inputReference);
+    console.log(this.inputReference.nativeElement);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes['inputValue']);
+    console.log(changes);
+  }
+
+  ngDoCheck(): void {
+    if (this.inputValue === 'new') {
+      console.log('data is changed');
+    }
   }
 
   constructor(private router: Router) {}
