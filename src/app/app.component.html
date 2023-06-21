@@ -1,15 +1,1 @@
-<router-outlet></router-outlet>
-
-<div class="container">
-  <h1>Data From Child: {{ receivedMessage }}</h1>
-  <ng-container *ngIf="isTestRoute()">
-    <app-test
-      #childComponent
-      (childEvent)="receivedMessage = $event"
-      [parentData]="outPostedMessage"
-    ></app-test>
-  </ng-container>
-  <button routerLink="/test">test</button>
-  <input #inputReference [(ngModel)]="inputValue" />
-  <p>{{ inputValue }}</p>
-</div>
+<div class="container"></div>
