@@ -1,10 +1,19 @@
+<form #form="ngForm" (submit)="onSubmit()" class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Search City ...</mat-label>
+    <input matInput placeholder="City Name" name="city" [(ngModel)]="city" />
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="primary">Submit</button>
+</form>
+
 <div class="weather-table">
   <div class="image-container">
     <img src="assets/coldnight.jpg" *ngIf="!isDay" />
     <img src="assets/hotday.jpg" *ngIf="isDay" />
     <div>
       <p>{{ city }}</p>
-      <h1>{{ temp }}&deg;C</h1>
+      <h1>{{ temp | number : "1.0-0" }}&deg;C</h1>
     </div>
   </div>
   <div class="info-container">
