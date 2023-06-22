@@ -1,10 +1,10 @@
 <div class="weather-table">
   <div class="image-container">
-    <img src="assets/coldnight.jpg" *ngIf="14 < 15" />
-    <img src="assets/hotday.jpg" *ngIf="14 > 15" />
+    <img src="assets/coldnight.jpg" *ngIf="!isDay" />
+    <img src="assets/hotday.jpg" *ngIf="isDay" />
     <div>
-      <p>city Name</p>
-      <h1>14 C</h1>
+      <p>{{ city }}</p>
+      <h1>{{ temp }}&deg;C</h1>
     </div>
   </div>
   <div class="info-container">
@@ -13,36 +13,36 @@
       <div class="flex-row">
         <div class="container">
           <div class="flex-col">
-            <img width="40px" src="assets/low-temperature.png" />
-            <p style="margin-right: 12px">Min</p>
+            <img width="64px" src="assets/low-temperature.png" />
+            <p style="margin-right: 12px">Temperature</p>
           </div>
-          <p>10 C</p>
+          <p>{{ temp }}&deg;C</p>
         </div>
 
         <div class="container">
           <div class="flex-col">
-            <img width="40px" src="assets/high-temperature.png" />
-            <p style="margin-left: 12px">Max</p>
+            <img [src]="conditionImage" />
+            <p style="margin-left: 12px">Condition</p>
           </div>
-          <p>10 C</p>
+          <p>{{ condition }}</p>
         </div>
       </div>
 
       <div class="flex-row">
         <div class="container">
           <div class="flex-col">
-            <img width="40px" src="assets/humidity.png" />
+            <img width="64px" src="assets/humidity.png" />
             <p>Humidity</p>
           </div>
-          <p>10 C</p>
+          <p>{{ humidity }} %</p>
         </div>
 
         <div class="container">
           <div class="flex-col">
-            <img width="40px" src="assets/wind.png" />
+            <img width="64px" src="assets/wind.png" />
             <p>Wind</p>
           </div>
-          <p>10 C</p>
+          <p>{{ wind_kph }} km/h</p>
         </div>
       </div>
     </div>

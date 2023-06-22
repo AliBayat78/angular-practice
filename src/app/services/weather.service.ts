@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { WeatherData } from '../models/weather.model';
+import { RootObject } from '../models/weather.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ import { WeatherData } from '../models/weather.model';
 export class WeatherService {
   constructor(private http: HttpClient) {}
 
-  getWeatherData(city: string): Observable<WeatherData> {
+  getWeatherData(city: string): Observable<RootObject> {
     const {
       weatherAPIBaseUrl,
       XRapidAPIHostName,
@@ -23,10 +23,11 @@ export class WeatherService {
       .set(XRapidAPIHostName, XRapidApiHostValue)
       .set(XRapidAPIKeyName, XRapidApiKeyValue);
 
-    const apiUrl = weatherAPIBaseUrl + encodeURIComponent(city);
+    const params = new HttpParams().set('q', city);
 
-    return this.http.get<WeatherData>(apiUrl, {
+    return this.http.get<RootObject>(weatherAPIBaseUrl, {
       headers,
+      params,
     });
   }
 }
