@@ -6,9 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { WeatherTableComponent } from './components/weather-table/weather-table/weather-table.component';
 
 @NgModule({
-  declarations: [AppComponent, NotfoundComponent],
+  declarations: [AppComponent, NotfoundComponent, WeatherTableComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
