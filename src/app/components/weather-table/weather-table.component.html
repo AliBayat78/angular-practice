@@ -16,9 +16,18 @@
       <h1>{{ temp | number : "1.0-0" }}&deg;C</h1>
     </div>
   </div>
-  <div class="info-container">
-    <p>More Information</p>
-    <div class="weather-information">
+  <p>More Information</p>
+  <div
+    class="info-container"
+    [ngClass]="getCursorType()"
+    (pointerdown)="onDragStart($event)"
+    (pointermove)="onDrag($event)"
+    (pointerup)="onDragEnd($event)"
+  >
+    <div
+      [style.transform]="'translate3d(' + trackPosition + 'px, 0, 0)'"
+      class="weather-information"
+    >
       <div class="flex-row">
         <div class="container">
           <div class="flex-col">

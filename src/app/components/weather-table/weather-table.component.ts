@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { RootObject, WeatherData } from 'src/app/models/weather.model';
 import { WeatherService } from 'src/app/services/weather.service';
 
@@ -20,9 +20,40 @@ export class WeatherTableComponent implements OnInit {
 
   constructor(private weatherService: WeatherService) {}
 
+  isDragging = false;
+  trackPosition = 0;
+  dragStartPosition = 0;
+  isGrabbing = false;
+
+  getCursorType() {
+    return {
+      grab: !this.isGrabbing,
+      grabbing: this.isGrabbing,
+    };
+  }
+  onDragStart(event: PointerEvent) {
+    this.isDragging = true;
+    this.dragStartPosition = event.clientX;
+    this.isGrabbing = true;
+  }
+
+  onDrag(event: PointerEvent) {
+    if (this.isDragging) {
+      const dragDistance = event.clientX - this.dragStartPosition;
+      this.trackPosition += dragDistance;
+      this.dragStartPosition = event.clientX;
+      this.isGrabbing = true;
+    }
+  }
+
+  onDragEnd(event: PointerEvent) {
+    this.isDragging = false;
+    this.isGrabbing = false;
+  }
   private getWeatherData(city: string) {
     this.weatherService.getWeatherData(city).subscribe({
       next: (response) => {
+        console.log(response);
         this.humidity = response.current.humidity;
         this.wind_kph = response.current.wind_kph;
         this.condition = response.current.condition.text;
